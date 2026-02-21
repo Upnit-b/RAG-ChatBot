@@ -10,6 +10,6 @@ system_prompt = (
 )
 
 chat_prompt = ChatPromptTemplate.from_messages([
-    {"system", system_prompt},
+    ("system", system_prompt),
     ("user", "{input}")
 ])
