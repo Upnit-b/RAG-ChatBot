@@ -4,9 +4,13 @@ from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 
 
 def file_loader(path):
-    loader = DirectoryLoader(path, glob=".pdf", loader_cls=PyPDFLoader)
+    loader = DirectoryLoader(path, glob="**/*.pdf", loader_cls=PyPDFLoader)
 
     documents = loader.load()
+
+    if not documents:
+        raise ValueError(f"No PDF files found in directory: {path}")
+
     return documents
 
 

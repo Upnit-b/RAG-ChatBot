@@ -5,7 +5,7 @@ from langchain_community.vectorstores import FAISS
 
 load_dotenv()
 
-file = file_loader(r"data/")
+file = file_loader("data")
 chunk_data = chunking_data(file)
 embeddings = get_embedding()
 

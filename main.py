@@ -41,7 +41,7 @@ def create_app():
     @app.route("/get", methods=["GET", "POST"])
     def chat():
         msg = request.form["msg"]
-        response = rag_chain.invoke({"input": msg})
+        response = rag_chain.invoke(msg)
         print("Response:", response)
         return str(response)
 
