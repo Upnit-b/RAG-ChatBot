@@ -12,8 +12,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
 
-
-
 def create_app():
     app = Flask(__name__)
 
@@ -40,11 +38,10 @@ def create_app():
     def index():
         return render_template("chat.html")
 
-
     @app.route("/get", methods=["GET", "POST"])
     def chat():
         msg = request.form["msg"]
-        response = rag_chain.invoke(msg)
+        response = rag_chain.invoke({"input": msg})
         print("Response:", response)
         return str(response)
 
